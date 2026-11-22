@@ -1,5 +1,5 @@
 # kernel-methods-for-causality-inference
-Exploring causal inference in financial time series and its applications to systematic trading strategies.
+Exploring causal inference in financial time series and its applications to systematic trading strategies. A quick presentation of my thesis is available on my LinkedIn profile.
 
 This repository builds upon my bachelor's thesis in physics, where I investigated the application of quantum kernel methods to causal inference in time series.
 
