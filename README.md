@@ -6,6 +6,22 @@ Two time series can move together without one causing the other. This project in
 
 Built on my bachelor's thesis in physics, it brings together stochastic simulation, kernel methods, statistical testing, and machine learning. I am turning the research code into a documented Python project, with financial time series as a planned application.
 
+## Why look beyond correlation?
+
+Pearson correlation measures **linear association**. It can miss a strong nonlinear relationship: if `X` is a standard normal variable and `Y = X²`, their population correlation is zero, even though knowing `X` determines `Y` exactly. Zero correlation therefore does not imply independence.
+
+Even when correlation detects a relationship, it cannot establish its causal direction. The diagram below shows three ways variables can be connected:
+
+![Three causal structures: a chain X → Y → Z, a fork X ← Y → Z, and a collider X → Y ← Z.](assets/causal-structures.png)
+
+- **Chain:** `X → Y → Z`. An influence travels through an intermediate variable.
+- **Fork:** `X ← Y → Z`. A shared cause can make `X` and `Z` associated without either causing the other.
+- **Collider:** `X → Y ← Z`. Two causes share an outcome; conditioning on that outcome can create an association between otherwise independent causes.
+
+Under the usual causal graph assumptions, conditioning on `Y` blocks the path between `X` and `Z` in a chain or fork, but opens it in a collider. This is why testing **conditional independence** matters: it helps distinguish structures that pairwise association alone cannot resolve.
+
+Kernel methods allow independence tests to capture nonlinear dependencies beyond Pearson correlation. This project applies them to whole time-series trajectories, providing evidence for causal discovery under explicit assumptions.
+
 ## What the project does
 
 - **Generate controlled datasets:** simulate stochastic processes with known causal relationships, so methods can be evaluated against ground truth.
